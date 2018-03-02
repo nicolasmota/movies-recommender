@@ -1,8 +1,7 @@
 language: python
 
-python:
-    - 3.6.0
-    - master
+install:
+  - make install
 script:
   - make test
 
