@@ -1,5 +1,7 @@
 # Movies Recommender
 
+[![Build Status](https://travis-ci.org/nicolasmota/movies-recommender.svg?branch=master)](https://travis-ci.org/nicolasmota/movies-recommender)
+
 
 Movies Recommender is a command line python application that recommends movies based on movies that have been watched by other users
 
