@@ -1,0 +1,9 @@
+language: python
+
+python:
+    - 3.6.0
+    - master
+script:
+  - make test
+
+after_success: bash <(curl -s https://codecov.io/bash)
