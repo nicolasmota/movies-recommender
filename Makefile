@@ -14,4 +14,4 @@ install:
 	@pip install -r requirements.txt --upgrade
 
 run:
-	python native_recommender/item_similiarity/main.py --input ${input} --movie_id ${movie_id} --k ${k}
+	python movies_recommender/item_similiarity/main.py --input ${input} --movie_id ${movie_id} --k ${k}
