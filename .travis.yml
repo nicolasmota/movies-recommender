@@ -4,6 +4,7 @@ python:
   - "3.6"
 
 install:
-  - make install
+  - pip install -r requirements.txt
+
 script:
-  - make test
+  - py.test -x --cov movies_recommender/ --cov-config=.coveragerc --cov-report=term
