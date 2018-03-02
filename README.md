@@ -12,13 +12,13 @@ Movies Recommender is a command line python application that recommends movies b
 2 - Create a Virtualenv using python 3:
 
 ```
-pyenv virtualenv 3.6.0 native_recommender
+pyenv virtualenv 3.6.0 movies_recommender
 ``` 
 
 3 - Activate the virtualenv:
 
 ```
-pyenv activate native_recommender
+pyenv activate movies_recommender
 ```
 
 4 - install the dependencies:
