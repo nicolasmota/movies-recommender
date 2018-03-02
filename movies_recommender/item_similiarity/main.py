@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.metrics import pairwise_distances
 
 
-class NativeRecommender:
+class MoviesRecommender:
 
     def __init__(self, data_path):
         self.data_file = self._get_data_file(data_path)
@@ -88,7 +88,7 @@ class NativeRecommender:
 if __name__ == "__main__":
     k = 5
     parser = argparse.ArgumentParser(
-        description="Native Recommender movies Application",
+        description="Movies Recommender Application",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
@@ -106,6 +106,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.k:
         k = args.k
-    native_recommender = NativeRecommender(args.inputfile)
-    movie_ids = native_recommender.recommend(args.movie_id, k)
+    movies_recommender = MoviesRecommender(args.inputfile)
+    movie_ids = movies_recommender.recommend(args.movie_id, k)
     print(movie_ids)

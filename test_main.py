@@ -3,10 +3,10 @@ import tempfile
 import numpy as np
 import pandas as pd
 
-from native_recommender.item_similiarity.main import NativeRecommender
+from movies_recommender.item_similiarity.main import MoviesRecommender
 
 
-class TestNativeRecommender:
+class TestMoviesRecommender:
 
     def get_temp_file(self, value):
         temp_file = tempfile.NamedTemporaryFile(suffix='.json', delete=False)
@@ -16,13 +16,13 @@ class TestNativeRecommender:
 
     def test_get_file(self):
         temp_file = self.get_temp_file(b'{"test": {"test1": 100}}')
-        nrecommender = NativeRecommender(temp_file.name)
+        nrecommender = MoviesRecommender(temp_file.name)
         assert nrecommender
 
     def test_get_movies(self):
         expected_json = b'{"movies": [{"1": "Test"}, {"2": "Test2"}]}'
         temp_file = self.get_temp_file(expected_json)
-        nrecommender = NativeRecommender(temp_file.name)
+        nrecommender = MoviesRecommender(temp_file.name)
 
         assert (
             nrecommender._get_movies() ==
@@ -32,7 +32,7 @@ class TestNativeRecommender:
     def test_normalize_dataset_should_return_a_dataframe(self):
         users_json = b'{"users": [{"user_id": 1, "movies": [1, 2, 3, 4]}]}'
         temp_file = self.get_temp_file(users_json)
-        nrecommender = NativeRecommender(temp_file.name)
+        nrecommender = MoviesRecommender(temp_file.name)
 
         assert isinstance(nrecommender._normalize_dataset(), pd.DataFrame)
         assert nrecommender._normalize_dataset().shape == (4, 3)
@@ -45,7 +45,7 @@ class TestNativeRecommender:
             ]}
         '''
         temp_file = self.get_temp_file(users_json)
-        nrecommender = NativeRecommender(temp_file.name)
+        nrecommender = MoviesRecommender(temp_file.name)
         sparse_data = nrecommender._get_sparse_data()
 
         assert isinstance(sparse_data, np.ndarray)
@@ -59,7 +59,7 @@ class TestNativeRecommender:
             ]}
         '''
         temp_file = self.get_temp_file(users_json)
-        nrecommender = NativeRecommender(temp_file.name)
+        nrecommender = MoviesRecommender(temp_file.name)
         sparse_data = nrecommender._get_sparse_data()
         train, test = nrecommender._create_train_test_data(sparse_data)
 
@@ -77,7 +77,7 @@ class TestNativeRecommender:
             ]}
         '''
         temp_file = self.get_temp_file(users_json)
-        nrecommender = NativeRecommender(temp_file.name)
+        nrecommender = MoviesRecommender(temp_file.name)
         sparse_data = nrecommender._get_sparse_data()
         train, _ = nrecommender._create_train_test_data(sparse_data)
 
@@ -104,7 +104,7 @@ class TestNativeRecommender:
         }
         '''
         temp_file = self.get_temp_file(users_json)
-        nrecommender = NativeRecommender(temp_file.name)
+        nrecommender = MoviesRecommender(temp_file.name)
         sparse_data = nrecommender._get_sparse_data()
         train, _ = nrecommender._create_train_test_data(sparse_data)
 
@@ -135,7 +135,7 @@ class TestNativeRecommender:
         }
         '''
         temp_file = self.get_temp_file(users_json)
-        nrecommender = NativeRecommender(temp_file.name)
+        nrecommender = MoviesRecommender(temp_file.name)
         movie_id = 2
         movies = nrecommender.recommend(movie_id, 4)
         """ Based on id 2 it will pick up the id that has correlation
