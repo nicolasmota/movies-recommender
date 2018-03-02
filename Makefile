@@ -8,7 +8,7 @@ clean:
 	@rm -f *.log
 
 test: clean
-	@py.test -x -v
+	@py.test -x --cov movies_recommender/ --cov-config=.coveragerc --cov-report=term
 
 install:
 	@pip install -r requirements.txt --upgrade
