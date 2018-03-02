@@ -1,7 +1,7 @@
-# Native Recommender
+# Movies Recommender
 
 
-Native Recommender is a command line python application that recommends movies based on movies that have been watched by other users
+Movies Recommender is a command line python application that recommends movies based on movies that have been watched by other users
 
 ## Installation
 
